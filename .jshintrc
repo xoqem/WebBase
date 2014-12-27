@@ -1,0 +1,11 @@
+{
+	"globals": {
+    "console": true,
+    "module": true,
+    "require": true
+  },
+
+  "curly": true,
+  "quotmark": true,
+  "undef": true
+}

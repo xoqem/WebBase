@@ -1,0 +1,12 @@
+# build files
+build/
+
+# npm files
+node_modules/
+*.log
+
+# IDE files
+.idea
+
+# OS files
+.DS_Store
