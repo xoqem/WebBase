@@ -5,9 +5,11 @@ var jshint = require('gulp-jshint');
 var lessify = require('node-lessify');
 var source = require('vinyl-source-stream');
 var stylish = require('jshint-stylish');
+var template = require('gulp-template');
 
 var paths = {
   app_js: ['./src/js/app.js'],
+  index: ['src/index.html'],
   js: ['src/js/**/*.js'],
   less: ['src/less/**/*.less']
 };
@@ -26,6 +28,16 @@ gulp.task('browserify', function() {
     .pipe(gulp.dest('./build/'));
 });
 
+// index - process index template and copy to build folder
+gulp.task('index', function() {
+  return gulp.src(paths.index)
+    .pipe(template({
+      time: Date.now()
+    }))
+    .pipe(gulp.dest('./build/'));
+});
+
+
 // jshint - check js for errors
 gulp.task('jshint', function() {
   return gulp.src(paths.js)
@@ -37,10 +49,11 @@ gulp.task('jshint', function() {
 gulp.task('watch', function() {
   gulp.watch(paths.less, ['build']);
   gulp.watch(paths.js, ['build']);
+  gulp.watch(paths.index, ['index']);
 });
 
 // build - standard build tasks
-gulp.task('build', ['jshint', 'browserify']);
+gulp.task('build', ['jshint', 'browserify', 'index']);
 
 // default - clean before running build task
 gulp.task('default', ['clean'], function() {

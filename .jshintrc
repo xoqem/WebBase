@@ -1,6 +1,7 @@
 {
   "globals": {
     "console": true,
+    "document": true,
     "module": true,
     "require": true
   },
