@@ -8,7 +8,7 @@ var stylish = require('jshint-stylish');
 
 var paths = {
   app_js: ['./src/js/app.js'],
-  js: ['src/js/*.js'],
+  js: ['src/js/**/*.js'],
   less: ['src/less/**/*.less']
 };
 
